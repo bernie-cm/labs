@@ -6,11 +6,20 @@
 docker network create mongo-network
 ```
 - Using the mongo image, create a container with the required environment variables
+```
+[~]$ docker run -d -p 27017:27017 \
+    -e MONGO_INITDB_ROOT_USERNAME=admin \
+    -e MONGO_INITDB_ROOT_PASSWORD=password \
+    --name mongodb --net mongo-network mongo
+```
 - Check container is running as expected.
 
 ## Running mongo express
 - This will provide a UI to administer the database.
 - Using the same network, and required environment variables run a container using the mongo container as the source database.
+```
+[~]$ docker run -d -p 8081:8081 -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin -e ME_CONFIG_MONGODB_ADMINPASSWORD=password -e ME_CONFIG_BASICAUTH_USERNAME=admin -e ME_CONFIG_BASICAUTH_PASSWORD=password --net mongo-network --name mongo-express -e ME_CONFIG_MONGODB_SERVER=mongodb -e ME_CONFIG_MONGODB_URL=mongodb://mongodb:27017 mongo-express
+```
 - Check all containers are running as expected.
 
 ### Troubleshooting
