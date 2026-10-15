@@ -39,6 +39,8 @@ services:
 # No need to set up a network
 - When two or more containers are run separately to deploy an application, a network has to be set up. For example, `mongo-network` to enable these two independent containers to communicate with each other
 - When using docker compose, it will take care of creating a default network, in this case called `docker_default`
+<img width="658" height="76" alt="image" src="https://github.com/user-attachments/assets/185d08ab-c6b7-4e56-b363-1e2374db99a4" />
+
 
 # Running and stopping the compose application
 - The commands to start or stop the application are simple
