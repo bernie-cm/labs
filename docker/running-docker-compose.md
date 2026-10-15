@@ -1,0 +1,2 @@
+## Running multiple containers with Docker Compose
+The idea is to create a single docker compose file that can be used to "orchestrate" different containers for an application. The efficiency is that you don't have to run separate, individual docker commands to start and stop containers.
