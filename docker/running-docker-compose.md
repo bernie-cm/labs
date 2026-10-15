@@ -5,6 +5,32 @@ The idea is to create a single docker compose file that can be used to "orchestr
 - Each "service" in docker compose represents one building block, or container in your application
 - In this example, we have a simple two-container database with mongodb and mongo-express
 - This docker compose then has two services: mongodb for the mongo container, and mongo-express for the express container
+```yaml
+services:
+  mongodb:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=password
+
+  mongo-express:
+    image: mongo-express:latest
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=password
+      - ME_CONFIG_BASICAUTH_USERNAME=admin
+      - ME_CONFIG_BASICAUTH_PASSWORD=password
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+      - ME_CONFIG_MONGODB_URL=mongodb://mongodb:27017 mongo-express
+    depends_on:
+      - "mongodb"
+
+```
 
 # Set up the dependencies
 - One important configuration is to set up `depends_on` properties correctly so the start order is correct
