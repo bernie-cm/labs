@@ -15,3 +15,13 @@ $ shasum -a 256 proxmox-ve_9.2-1.iso
 4e88fe416df9b527624a175f24c9aa07c714d3332afb1ee3dbf3879573ef2c6c  proxmox-ve_9.2-1.iso
 $
 ```
+To create the bootable media, use MacOS tools like `diskutil` and `dd`
+```
+# First identify the device assigned to the USB
+$ diskutil list
+# Then use unmountDisk to release the USB *without* ejecting it. This ensures no other program or service writes to the
+# USB drive while the bootable media is created
+$ diskutil unmountDisk /dev/diskX # X is the number you got from the previous steps
+# Then use dd to write the bootable USB
+$ dd if=proxmox-ve_9.2-1.iso of=/dev/rdisk5 bs=4m status=progress
+```
