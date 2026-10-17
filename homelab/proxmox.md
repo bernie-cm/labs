@@ -11,7 +11,7 @@ SHA256SUM
 
 And that matches the hash of the file I have
 ```
-bernie•~/Downloads» shasum -a 256 proxmox-ve_9.2-1.iso                                                                           [11:26:32]
+$ shasum -a 256 proxmox-ve_9.2-1.iso
 4e88fe416df9b527624a175f24c9aa07c714d3332afb1ee3dbf3879573ef2c6c  proxmox-ve_9.2-1.iso
-bernie•~/Downloads»
+$
 ```
